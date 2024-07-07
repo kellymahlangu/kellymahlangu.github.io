@@ -1,0 +1,115 @@
+:root {
+    --background-color-light: #f0f0f0;
+    --text-color-light: #333;
+    --link-color-light: #0066cc;
+
+    --background-color-dark: #333;
+    --text-color-dark: #f0f0f0;
+    --link-color-dark: #66ccff;
+
+    --background-color: var(--background-color-light);
+    --text-color: var(--text-color-light);
+    --link-color: var(--link-color-light);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background: var(--text-color);
+    color: var(--background-color);
+    padding: 20px 0;
+    text-align: center;
+}
+
+#theme-toggle {
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#theme-toggle:hover {
+    background: var(--text-color);
+    color: var(--background-color);
+}
+
+nav {
+    background: var(--text-color);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--background-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background: var(--link-color);
+}
+
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section p, section ul {
+    text-align: center;
+    line-height: 1.6;
+}
+
+footer {
+    background: var(--text-color);
+    color: var(--background-color);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.project {
+    background: var(--background-color);
+    border: 1px solid var(--text-color);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.project p {
+    margin-bottom: 0;
+}
