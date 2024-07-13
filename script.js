@@ -10,3 +10,7 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
         root.style.setProperty('--link-color', root.style.getPropertyValue('--link-color-light'));
     }
 });
+
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('active');
+});
