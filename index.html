@@ -1,84 +1,912 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Full Stack Developer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>John Doe</h1>
-            <p>Full Stack Developer</p>
-            <button id="theme-toggle">Toggle Dark Mode</button>
-        </div>
-    </header>
-    
-    <nav>
-        <div class="container">
-            <div class="navbar">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button id="menu-toggle">☰</button>
-            </div>
-        </div>
-    </nav>
-    
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I am a passionate full-stack developer with experience in building web applications using modern technologies.</p>
-        </div>
-    </section>
-    
-    <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>Express</li>
-                <li>MongoDB</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Project 1</h3>
-                <p>Description of Project 1.</p>
-            </div>
-            <div class="project">
-                <h3>Project 2</h3>
-                <p>Description of Project 2.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Email: john.doe@example.com</p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/johndoe">linkedin.com/in/johndoe</a></p>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 John Doe</p>
-        </div>
-    </footer>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <style>
+      /* Header Styling */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #ffffff; /* Light mode */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
 
-    <script src="script.js"></script>
-</body>
+      .header-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .navigation a {
+        margin: 0 1rem;
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+      }
+
+      .navigation a:hover {
+        color: #007bff; /* Highlight color */
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        cursor: pointer;
+      }
+
+      /* Responsive Navigation */
+      @media (max-width: 768px) {
+        .navigation {
+          display: none; /* Hide links on smaller screens */
+        }
+
+        .hamburger-menu {
+          display: block; /* Add a hamburger icon */
+        }
+      }
+
+      /* Hero Section Styling */
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 2rem;
+        background-color: #f8f9fa; /* Light background */
+        text-align: left;
+        min-height: 90vh; /* Makes it full-screen on most devices */
+      }
+
+      .hero-content {
+        max-width: 50%;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        color: #333;
+        margin: 0;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+        color: #007bff; /* Accent color */
+        margin: 1rem 0;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        color: #555;
+        margin: 1rem 0 2rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .cta-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+      }
+
+      .cta-primary:hover {
+        background-color: #0056b3;
+      }
+
+      .cta-secondary {
+        background-color: transparent;
+        color: #007bff;
+        border: 2px solid #007bff;
+      }
+
+      .cta-secondary:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      .hero-image {
+        max-width: 40%;
+      }
+
+      .hero-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-content {
+          max-width: 100%;
+        }
+
+        .hero-image {
+          margin-top: 2rem;
+          max-width: 80%;
+        }
+      }
+
+      /* Skills Section Styling */
+      .skills {
+        padding: 2rem 2rem;
+        background-color: #f8f9fa;
+        text-align: left;
+      }
+
+      .skills h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .skills-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .skill-category {
+        flex: 1 1 30%; /* Flexible width for responsive design */
+        margin-bottom: 2rem;
+      }
+
+      .skill-category h3 {
+        font-size: 1.5rem;
+        color: #007bff;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .skill-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .skill-list li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .skill-list img {
+        width: 30px;
+        height: 30px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .skills-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .skill-category {
+          flex: 1 1 100%;
+        }
+      }
+
+      /* Projects Section Styling */
+      .projects {
+        padding: 2rem 2rem;
+        background-color: #f8f9fa;
+        text-align: center;
+      }
+
+      .projects h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .projects p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+
+      .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .project-info {
+        padding: 1rem;
+        text-align: left;
+      }
+
+      .project-info h3 {
+        font-size: 1.5rem;
+        color: #007bff;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-info p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tech-stack span {
+        background: #e9ecef;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #333;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .cta-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+      }
+
+      .cta-primary:hover {
+        background-color: #0056b3;
+      }
+
+      .cta-secondary {
+        background-color: transparent;
+        color: #007bff;
+        border: 2px solid #007bff;
+      }
+
+      .cta-secondary:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .projects-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Experience Section Styling */
+      .experience {
+        padding: 2rem 2rem;
+        background-color: #f8f9fa;
+        text-align: left;
+      }
+
+      .experience h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+
+      .experience p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .experience-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .experience-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .experience-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .experience-card h3 {
+        font-size: 1.5rem;
+        color: #007bff;
+        margin-bottom: 0.25rem;
+      }
+
+      .experience-card h3 span {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .dates {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 1rem;
+      }
+
+      .role-summary {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      .achievements {
+        list-style: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .achievements li {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .skills-used {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .skills-used span {
+        background: #e9ecef;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #333;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .experience-container {
+          flex-direction: column;
+        }
+      }
+
+      /* Other stuff */
+
+      .experience-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease-in-out forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Testimonials Section Styling */
+      .testimonials {
+        padding: 2rem 2rem;
+        background-color: #f8f9fa;
+        text-align: center;
+      }
+
+      .testimonials h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .testimonials p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+
+      .testimonials-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .testimonial-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        max-width: 400px;
+        flex: 1 1 calc(33% - 1rem);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      blockquote {
+        font-size: 1rem;
+        font-style: italic;
+        color: #333;
+        margin-bottom: 1rem;
+        border-left: 3px solid #007bff;
+        padding-left: 1rem;
+      }
+
+      .author {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .author-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+
+      .author-details h4 {
+        font-size: 1rem;
+        color: #007bff;
+        margin: 0;
+      }
+
+      .author-details p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0.25rem 0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .testimonials-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .testimonial-card {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+
+      /* Contact Section Styling */
+      .contact {
+        padding: 2rem 2rem;
+        background-color: #f8f9fa;
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .contact p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+
+      .contact-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      .contact-form button {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-form button:hover {
+        background-color: #0056b3;
+      }
+
+      .alternative-contact {
+        margin-top: 2rem;
+      }
+
+      .alternative-contact ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .alternative-contact li {
+        margin: 0.5rem 0;
+      }
+
+      .alternative-contact a {
+        font-size: 1rem;
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .alternative-contact a:hover {
+        color: #0056b3;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .contact-form form {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="header-container">
+        <!-- Logo/Name -->
+        <a href="#" class="logo">[Your Name]</a>
+
+        <!-- Navigation Links -->
+        <nav class="navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Dark/Light Mode Toggle -->
+        <button class="theme-toggle">☀️/🌙</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hi, I’m <span>[Your Name]</span>.</h1>
+        <h2>A <span>Frontend Developer</span>.</h2>
+        <p>Turning ideas into visually stunning, functional applications.</p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-buttons">
+          <a href="#projects" class="cta-primary">View My Work</a>
+          <a href="#contact" class="cta-secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Optional Visual -->
+      <div class="hero-image">
+        <img src="your-image.png" alt="Your Illustration or Photo" />
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+      <h2>Skills & Expertise</h2>
+      <div class="skills-container">
+        <!-- Frontend Skills -->
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <ul class="skill-list">
+            <li><img src="html-icon.svg" alt="HTML" /> HTML</li>
+            <li><img src="css-icon.svg" alt="CSS" /> CSS</li>
+            <li><img src="js-icon.svg" alt="JavaScript" /> JavaScript</li>
+            <li><img src="react-icon.svg" alt="React" /> React</li>
+          </ul>
+        </div>
+
+        <!-- Backend Skills -->
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <ul class="skill-list">
+            <li><img src="nodejs-icon.svg" alt="Node.js" /> Node.js</li>
+            <li><img src="express-icon.svg" alt="Express" /> Express</li>
+            <li><img src="python-icon.svg" alt="Python" /> Python</li>
+          </ul>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-category">
+          <h3>Tools & Platforms</h3>
+          <ul class="skill-list">
+            <li><img src="git-icon.svg" alt="Git" /> Git</li>
+            <li><img src="figma-icon.svg" alt="Figma" /> Figma</li>
+            <li><img src="docker-icon.svg" alt="Docker" /> Docker</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+      <h2>Projects</h2>
+      <p>
+        Here are some of my recent projects that showcase my development skills.
+      </p>
+
+      <div class="projects-container">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img
+            src="project1-thumbnail.png"
+            alt="Project 1 Screenshot"
+            class="project-image"
+          />
+          <div class="project-info">
+            <h3>Project Title</h3>
+            <p>
+              A short description of the project, its purpose, and what problem
+              it solves.
+            </p>
+            <div class="tech-stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span
+              ><span>React</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="cta-primary">Live Demo</a>
+              <a href="#" class="cta-secondary">View Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat for other projects -->
+        <div class="project-card">
+          <img
+            src="project2-thumbnail.png"
+            alt="Project 2 Screenshot"
+            class="project-image"
+          />
+          <div class="project-info">
+            <h3>Another Project</h3>
+            <p>
+              Description for the second project highlighting unique features.
+            </p>
+            <div class="tech-stack">
+              <span>Node.js</span><span>Express</span><span>MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="cta-primary">Live Demo</a>
+              <a href="#" class="cta-secondary">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+      <h2>Work Experience</h2>
+      <p>Roles where I made an impact through innovation and collaboration.</p>
+
+      <div class="experience-container">
+        <!-- Experience 1 -->
+        <div class="experience-card">
+          <h3>Frontend Developer <span>@ Tech Solutions Inc.</span></h3>
+          <p class="dates">January 2021 – Present</p>
+          <p class="role-summary">
+            Developed and maintained user-friendly interfaces for various client
+            projects, focusing on performance and responsiveness.
+          </p>
+          <ul class="achievements">
+            <li>
+              Led the redesign of the company's e-commerce platform, improving
+              conversion rates by 30%.
+            </li>
+            <li>
+              Implemented a React-based component library, reducing development
+              time by 20%.
+            </li>
+            <li>
+              Collaborated with cross-functional teams to deliver 15+ successful
+              projects.
+            </li>
+          </ul>
+          <div class="skills-used">
+            <span>HTML</span><span>CSS</span><span>React</span><span>Git</span>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="experience-card">
+          <h3>Junior Web Developer <span>@ Creative Coders</span></h3>
+          <p class="dates">June 2019 – December 2020</p>
+          <p class="role-summary">
+            Assisted in building dynamic websites for small businesses, ensuring
+            functionality and SEO optimization.
+          </p>
+          <ul class="achievements">
+            <li>
+              Built responsive templates that improved client satisfaction by
+              25%.
+            </li>
+            <li>
+              Optimized website load times, reducing average page speed by 1.5
+              seconds.
+            </li>
+            <li>
+              Introduced automated testing for key modules, improving QA
+              efficiency.
+            </li>
+          </ul>
+          <div class="skills-used">
+            <span>JavaScript</span><span>Bootstrap</span><span>WordPress</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2>What People Say</h2>
+      <p>Here’s what my clients and colleagues say about working with me.</p>
+
+      <div class="testimonials-container">
+        <!-- Testimonial 1 -->
+        <!-- <div class="carousel"></div> -->
+        <div class="testimonial-card">
+          <blockquote>
+            "John's expertise in web development transformed our online
+            presence. His creative solutions and attention to detail were
+            outstanding."
+          </blockquote>
+          <div class="author">
+            <img src="author1.jpg" alt="Author Photo" class="author-photo" />
+            <div class="author-details">
+              <h4>Jane Doe</h4>
+              <p>CEO, TechCorp</p>
+              <p><small>Worked together on website redesign</small></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <blockquote>
+            "John was instrumental in delivering a highly successful e-commerce
+            platform. His problem-solving skills and communication made the
+            project seamless."
+          </blockquote>
+          <div class="author">
+            <img src="author2.jpg" alt="Author Photo" class="author-photo" />
+            <div class="author-details">
+              <h4>Mark Smith</h4>
+              <p>Project Manager, E-Shop Solutions</p>
+              <p><small>Collaborated on e-commerce project</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <h2>Get in Touch</h2>
+      <p>
+        I’d love to hear from you! Fill out the form below or reach out via
+        email or social media.
+      </p>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form action="your-form-handler-url" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="text" name="subject" placeholder="Subject (Optional)" />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Alternative Contact Options -->
+      <div class="alternative-contact">
+        <p>Or reach out directly:</p>
+        <ul>
+          <li>
+            <a href="mailto:youremail@example.com">youremail@example.com</a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/yourprofile" target="_blank">GitHub</a>
+          </li>
+          <li><a href="tel:+1234567890">+123-456-7890</a></li>
+        </ul>
+      </div>
+    </section>
+  </body>
 </html>
